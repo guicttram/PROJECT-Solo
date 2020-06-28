@@ -12,7 +12,7 @@ pygame.display.set_caption('PROJECT: SOLO')
 icone = pygame.image.load('stars/solo.png')
 pygame.display.set_icon(icone)
 explosion_sound = pygame.mixer.Sound('stars/explosao.wav')
-missile_sound = pygame.mixer.Sound('stars/blaster.wav')
+blast_sound = pygame.mixer.Sound('stars/blaster.wav')
 
 
 
@@ -21,24 +21,24 @@ clock = pygame.time.Clock()
 black = (0, 0, 0)
 white = (255, 255, 255)
 red = (170, 0, 0)
-ironMan = pygame.image.load('stars/ship.png')
-iron_width = 270
-iron_height = 100
+falcon = pygame.image.load('stars/ship.png')
+falcon_width = 270
+falcon_height = 100
 
-missile = pygame.image.load('stars/laser.png')
-missile_width = 200
-missile_height = 40
+blaster = pygame.image.load('stars/laser.png')
+blast_width = 200
+blast_height = 40
 
 back = pygame.image.load('stars/block.png')
 
 
 ### funcoes globais ###
 
-def showIron(x, y):
-    gameDisplay.blit(ironMan, (x, y))
+def showFalcon(x, y):
+    gameDisplay.blit(falcon, (x, y))
 
-def showMissile(x, y):
-    gameDisplay.blit(missile, (x, y))
+def showBlast(x, y):
+    gameDisplay.blit(blaster, (x, y))
 
 def text_objects(text, font):
     textSurface = font.render(text, True, red)
@@ -68,14 +68,14 @@ def writeScore(contador):
 def game_loop():
     pygame.mixer.music.load('stars/backsound.mp3')
     pygame.mixer.music.play(-1)
-    pygame.mixer.Sound.play(missile_sound)
+    pygame.mixer.Sound.play(blast_sound)
 
-    iron_X = 0
-    iron_Y = 325
+    falcon_X = 0
+    falcon_Y = 325
     moveY = 0
-    missile_speed = 7
-    missile_X = 1050
-    missile_Y = random.randrange(0, screen_height)
+    blast_speed = 7
+    blast_X = 1050
+    blast_Y = random.randrange(0, screen_height)
     dodges = 0
 
     while True:
@@ -94,34 +94,34 @@ def game_loop():
             if evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_UP or evento.key == pygame.K_DOWN:
                     moveY = 0
-        iron_Y += moveY
+        falcon_Y += moveY
         # fim - interacao com o usuario
 
         # alterando a cor do fundo de tela
         gameDisplay.fill(black)
         gameDisplay.blit(back, (0, 0))
 
-        showIron(iron_X, iron_Y)
+        showFalcon(falcon_X, falcon_Y)
 
-        showMissile(missile_X, missile_Y)
-        missile_X -= missile_speed       
+        showBlast(blast_X, blast_Y)
+        blast_X -= blast_speed       
 
-        if missile_X < 0:
-            pygame.mixer.Sound.play(missile_sound)            
-            missile_X = screen_width + missile_width
-            missile_speed += 1
-            missile_Y = random.randrange(0, screen_height)
+        if blast_X < 0:
+            pygame.mixer.Sound.play(blast_sound)            
+            blast_X = screen_width + blast_width
+            blast_speed += 1
+            blast_Y = random.randrange(0, screen_height)
             dodges += 1
         
         writeScore(dodges)
 
-        if iron_Y > screen_height - iron_height:
-            iron_Y = screen_height - iron_height
-        elif iron_Y < 0:
-            iron_Y = 0
+        if falcon_Y > screen_height - falcon_height:
+            falcon_Y = screen_height - falcon_height
+        elif falcon_Y < 0:
+            falcon_Y = 0
         
-        if iron_X + 150 > missile_X:
-            if iron_Y < missile_Y and iron_Y + iron_height > missile_Y or missile_Y + missile_height > iron_Y and missile_Y + missile_height < iron_Y + iron_height:
+        if falcon_X + 150 > blast_X:
+            if falcon_Y < blast_Y and falcon_Y + falcon_height > blast_Y or blast_Y + blast_height > falcon_Y and blast_Y + blast_height < falcon_Y + falcon_height:
                 dead()
             
         pygame.display.update()
