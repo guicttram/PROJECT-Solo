@@ -135,8 +135,8 @@ def game_loop():
         elif falcon_X < 0:
             falcon_X = 0
         
-        if falcon_X + 150 > blast_X:
-            if falcon_Y < blast_Y and falcon_Y + falcon_height > blast_Y or blast_Y + blast_height > falcon_Y and blast_Y + blast_height < falcon_Y + falcon_height:
+        if falcon_X + 140 > blast_X and blast_X > falcon_X:
+            if falcon_Y < blast_Y < falcon_Y + falcon_height:
                 dead()
             
         pygame.display.update()
