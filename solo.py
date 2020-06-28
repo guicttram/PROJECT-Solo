@@ -13,14 +13,14 @@ icone = pygame.image.load('stars/solo.png')
 pygame.display.set_icon(icone)
 explosion_sound = pygame.mixer.Sound('stars/explosao.wav')
 blast_sound = pygame.mixer.Sound('stars/blaster.wav')
-
-
+hit_sound = pygame.mixer.Sound('stars/hit.wav')
 
 clock = pygame.time.Clock()
 # RGB
 black = (0, 0, 0)
 white = (255, 255, 255)
 red = (170, 0, 0)
+blue = (50, 180, 250)
 falcon = pygame.image.load('stars/ship.png')
 falcon_width = 180
 falcon_height = 70
@@ -58,10 +58,22 @@ def dead():
     pygame.mixer.Sound.play(explosion_sound)
     message_display('YOU DIED')
 
+def hit(shield):
+    pygame.mixer.music.stop()
+    pygame.mixer.Sound.play(explosion_sound)
+    message_display('ATINGIDO!')
+    shield -= 1
+    return shield
+
 def writeScore(contador):
     font = pygame.font.SysFont(None, 45)
     text = font.render('Desvios: ' + str(contador), True, white)
-    gameDisplay.blit(text, (950, 30))
+    gameDisplay.blit(text, (900, 30))
+
+def shieldDisplay(shield):
+    font = pygame.font.SysFont(None, 45)
+    text = font.render(f'Energia do escudo: {shield:.0f}', True, blue)
+    gameDisplay.blit(text, (900, 70))
 
 # loop do jogo
 
@@ -78,6 +90,8 @@ def game_loop():
     blast_X = 1050
     blast_Y = random.randrange(0, screen_height)
     dodges = 0
+    shield = 100
+    damage = 1
 
     while True:
         # inicio - interacao do usuario
@@ -123,8 +137,10 @@ def game_loop():
             blast_speed += 1
             blast_Y = random.randrange(0, screen_height)
             dodges += 1
+            damage += dodges/10
         
         writeScore(dodges)
+        shieldDisplay(shield)
 
         if falcon_Y > screen_height - falcon_height:
             falcon_Y = screen_height - falcon_height
@@ -137,7 +153,11 @@ def game_loop():
         
         if falcon_X + 140 > blast_X and blast_X > falcon_X:
             if falcon_Y < blast_Y < falcon_Y + falcon_height:
-                dead()
+                if shield > 0:
+                    shield -= damage
+                    pygame.mixer.Sound.play(hit_sound)
+                else:
+                    dead()
             
         pygame.display.update()
         clock.tick(60)
