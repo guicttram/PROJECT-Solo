@@ -22,12 +22,12 @@ black = (0, 0, 0)
 white = (255, 255, 255)
 red = (170, 0, 0)
 falcon = pygame.image.load('stars/ship.png')
-falcon_width = 270
-falcon_height = 100
+falcon_width = 180
+falcon_height = 70
 
 blaster = pygame.image.load('stars/laser.png')
-blast_width = 200
-blast_height = 40
+blast_width = 100
+blast_height = 15
 
 back = pygame.image.load('stars/block.png')
 
@@ -112,7 +112,10 @@ def game_loop():
         showFalcon(falcon_X, falcon_Y)
 
         showBlast(blast_X, blast_Y)
-        blast_X -= blast_speed       
+        blast_X -= blast_speed    
+
+        showBlast(blast_X, blast_Y)
+        blast_X -= blast_speed   
 
         if blast_X < 0:
             pygame.mixer.Sound.play(blast_sound)            
