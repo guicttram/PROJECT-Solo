@@ -73,6 +73,7 @@ def game_loop():
     falcon_X = 0
     falcon_Y = 325
     moveY = 0
+    moveX = 0
     blast_speed = 7
     blast_X = 1050
     blast_Y = random.randrange(0, screen_height)
@@ -91,10 +92,17 @@ def game_loop():
                     moveY = -10
                 elif evento.key == pygame.K_DOWN:
                     moveY = 10
+                if evento.key == pygame.K_LEFT:
+                    moveX = -10
+                elif evento.key == pygame.K_RIGHT:
+                    moveX = 10
             if evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_UP or evento.key == pygame.K_DOWN:
                     moveY = 0
+                if evento.key == pygame.K_LEFT or evento.key == pygame.K_RIGHT:
+                    moveX = 0
         falcon_Y += moveY
+        falcon_X += moveX
         # fim - interacao com o usuario
 
         # alterando a cor do fundo de tela
@@ -119,6 +127,10 @@ def game_loop():
             falcon_Y = screen_height - falcon_height
         elif falcon_Y < 0:
             falcon_Y = 0
+        if falcon_X > screen_width - falcon_width:
+            falcon_X = screen_width - falcon_width
+        elif falcon_X < 0:
+            falcon_X = 0
         
         if falcon_X + 150 > blast_X:
             if falcon_Y < blast_Y and falcon_Y + falcon_height > blast_Y or blast_Y + blast_height > falcon_Y and blast_Y + blast_height < falcon_Y + falcon_height:
