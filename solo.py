@@ -14,6 +14,8 @@ pygame.display.set_icon(icone)
 explosion_sound = pygame.mixer.Sound('stars/explosao.wav')
 blast_sound = pygame.mixer.Sound('stars/blaster.wav')
 hit_sound = pygame.mixer.Sound('stars/hit.wav')
+victory_sound = pygame.mixer.Sound('stars/victory.wav')
+death_sound = pygame.mixer.Sound('stars/death.wav')
 
 clock = pygame.time.Clock()
 # RGB
@@ -21,6 +23,7 @@ black = (0, 0, 0)
 white = (255, 255, 255)
 red = (170, 0, 0)
 blue = (50, 180, 250)
+yellow = (230, 230, 30)
 falcon = pygame.image.load('stars/ship.png')
 falcon_width = 180
 falcon_height = 70
@@ -40,30 +43,24 @@ def showFalcon(x, y):
 def showBlast(x, y):
     gameDisplay.blit(blaster, (x, y))
 
-def text_objects(text, font):
-    textSurface = font.render(text, True, red)
+def text_objects(text, font, color):
+    textSurface = font.render(text, True, color)
     return textSurface, textSurface.get_rect()
 
-def message_display(text):
-    largeText = pygame.font.Font('freesansbold.ttf', 115)
-    TextSurf, TextRect = text_objects(text, largeText)
+def message_display(text, color, font):
+    largeText = pygame.font.Font('freesansbold.ttf', font)
+    TextSurf, TextRect = text_objects(text, largeText, color)
     TextRect.center = (screen_width/2, screen_height/2)
     gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
-    time.sleep(3)
+    time.sleep(5)
     game_loop()
 
 def dead():
     pygame.mixer.music.stop()
     pygame.mixer.Sound.play(explosion_sound)
-    message_display('YOU DIED')
-
-def hit(shield):
-    pygame.mixer.music.stop()
-    pygame.mixer.Sound.play(explosion_sound)
-    message_display('ATINGIDO!')
-    shield -= 1
-    return shield
+    pygame.mixer.Sound.play(death_sound)
+    message_display('YOU DIED', red, 115)
 
 def writeScore(contador):
     font = pygame.font.SysFont(None, 45)
@@ -158,7 +155,12 @@ def game_loop():
                     pygame.mixer.Sound.play(hit_sound)
                 else:
                     dead()
-            
+
+        if dodges == 35:
+            pygame.mixer.music.stop()
+            pygame.mixer.Sound.play(victory_sound)
+            message_display('Han Solo escapou! Vitória!', yellow, 90)
+
         pygame.display.update()
         clock.tick(60)
 
