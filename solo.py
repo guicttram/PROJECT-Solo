@@ -69,7 +69,10 @@ def writeScore(contador):
 
 def shieldDisplay(shield):
     font = pygame.font.SysFont(None, 45)
-    text = font.render(f'Energia do escudo: {shield:.0f}', True, blue)
+    if shield > 0:
+        text = font.render(f'Energia do escudo: {shield:.0f}', True, blue)
+    else:
+        text = font.render('Energia do escudo: 0', True, blue)
     gameDisplay.blit(text, (900, 70))
 
 # loop do jogo
