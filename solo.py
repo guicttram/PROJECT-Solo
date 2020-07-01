@@ -1,12 +1,14 @@
 import pygame
 import time
 import random
-from functions import writeLog, text_objects
+from os import system
+from functions import writeLog, text_objects, limparTela
 
 print('Olá, jogador! Antes de jogar, forneça alguns dados.')
 name = input('Informe o seu nome: ')
 email = input('Informe o seu email: ')
 writeLog(name, email)
+system(limparTela())
 
 pygame.init()
 
