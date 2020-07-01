@@ -12,10 +12,18 @@ pygame.display.set_caption('PROJECT: SOLO')
 icone = pygame.image.load('stars/solo.png')
 pygame.display.set_icon(icone)
 explosion_sound = pygame.mixer.Sound('stars/explosao.wav')
+explosion_sound.set_volume(0.5)
 blast_sound = pygame.mixer.Sound('stars/blaster.wav')
+blast_sound.set_volume(0.5)
 hit_sound = pygame.mixer.Sound('stars/hit.wav')
+hit_sound.set_volume(0.1)
 victory_sound = pygame.mixer.Sound('stars/victory.wav')
+victory_sound.set_volume(1)
 death_sound = pygame.mixer.Sound('stars/death.wav')
+death_sound.set_volume(1)
+music = pygame.mixer.Sound('stars/backsound.wav')
+music.set_volume(0.3)
+
 
 clock = pygame.time.Clock()
 # RGB
@@ -48,12 +56,13 @@ def text_objects(text, font, color):
     return textSurface, textSurface.get_rect()
 
 def message_display(text, color, font):
+    pygame.mixer.Sound.stop(music)
     largeText = pygame.font.Font('freesansbold.ttf', font)
     TextSurf, TextRect = text_objects(text, largeText, color)
     TextRect.center = (screen_width/2, screen_height/2)
     gameDisplay.blit(TextSurf, TextRect)
     pygame.display.update()
-    time.sleep(5)
+    time.sleep(6)
     game_loop()
 
 def dead():
@@ -78,8 +87,7 @@ def shieldDisplay(shield):
 # loop do jogo
 
 def game_loop():
-    pygame.mixer.music.load('stars/backsound.mp3')
-    pygame.mixer.music.play(-1)
+    pygame.mixer.Sound.play(music)
     pygame.mixer.Sound.play(blast_sound)
 
     falcon_X = 0
