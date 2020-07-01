@@ -2,6 +2,14 @@ import pygame
 import time
 import random
 
+print('Olá, jogador! Antes de jogar, forneça alguns dados.')
+name = input('Informe o seu nome: ')
+email = input('Informe o seu email: ')
+log = open('log.txt', 'a')
+log.write(f'Nome do jogador: {name}\nEmail: {email}')
+log.write('\n')
+log.close()
+
 pygame.init()
 
 #### variaveis globais ####
@@ -23,7 +31,6 @@ death_sound = pygame.mixer.Sound('stars/death.wav')
 death_sound.set_volume(1)
 music = pygame.mixer.Sound('stars/backsound.wav')
 music.set_volume(0.3)
-
 
 clock = pygame.time.Clock()
 # RGB
