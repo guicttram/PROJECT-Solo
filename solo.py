@@ -1,14 +1,12 @@
 import pygame
 import time
 import random
+from functions import writeLog, text_objects
 
 print('Olá, jogador! Antes de jogar, forneça alguns dados.')
 name = input('Informe o seu nome: ')
 email = input('Informe o seu email: ')
-log = open('log.txt', 'a')
-log.write(f'Nome do jogador: {name}\nEmail: {email}')
-log.write('\n')
-log.close()
+writeLog(name, email)
 
 pygame.init()
 
@@ -57,10 +55,6 @@ def showFalcon(x, y):
 
 def showBlast(x, y):
     gameDisplay.blit(blaster, (x, y))
-
-def text_objects(text, font, color):
-    textSurface = font.render(text, True, color)
-    return textSurface, textSurface.get_rect()
 
 def message_display(text, color, font):
     pygame.mixer.Sound.stop(music)
