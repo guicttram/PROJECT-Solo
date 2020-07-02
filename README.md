@@ -2,6 +2,7 @@
 My first game with PyGame ever.
 
 Nome: Guilherme Ceratti
+
 Email: guicttram@gmail.com
 
 [PORTUGUESE]
