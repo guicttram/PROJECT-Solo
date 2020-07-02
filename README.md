@@ -1,6 +1,9 @@
 # PROJECT-Solo
 My first game with PyGame ever.
 
+Nome: Guilherme Ceratti
+Email: guicttram@gmail.com
+
 [PORTUGUESE]
 Olá! Bem vindo ao PROJECT: Solo
 O jogo consiste numa simples imaginação da cena de 
