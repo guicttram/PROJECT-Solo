@@ -5,6 +5,8 @@ Nome: Guilherme Ceratti
 
 Email: guicttram@gmail.com
 
+LinkedIn: linkedin.com/in/guicttram
+
 [PORTUGUESE]
 Olá! Bem vindo ao PROJECT: Solo
 O jogo consiste numa simples imaginação da cena de 
