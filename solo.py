@@ -4,9 +4,9 @@ import random
 from os import system
 from functions import writeLog, text_objects, limparTela
 
-print('Olá, jogador! Antes de jogar, forneça alguns dados.')
-name = input('Informe o seu nome: ')
-email = input('Informe o seu email: ')
+print('Welcome, player! Before playing, please inform some data.')
+name = input('Name: ')
+email = input('Email: ')
 writeLog(name, email)
 system(limparTela())
 
@@ -76,15 +76,15 @@ def dead():
 
 def writeScore(contador):
     font = pygame.font.SysFont(None, 45)
-    text = font.render('Desvios: ' + str(contador), True, white)
+    text = font.render('Dodged: ' + str(contador), True, white)
     gameDisplay.blit(text, (900, 30))
 
 def shieldDisplay(shield):
     font = pygame.font.SysFont(None, 45)
     if shield > 0:
-        text = font.render(f'Energia do escudo: {shield:.0f}', True, blue)
+        text = font.render(f'Shield energy: {shield:.0f}', True, blue)
     else:
-        text = font.render('Energia do escudo: 0', True, blue)
+        text = font.render('Shield energy: 0', True, blue)
     gameDisplay.blit(text, (900, 70))
 
 # loop do jogo
@@ -173,7 +173,7 @@ def game_loop():
         if dodges == 35:
             pygame.mixer.music.stop()
             pygame.mixer.Sound.play(victory_sound)
-            message_display('Han Solo escapou! Vitória!', yellow, 90)
+            message_display('Han Solo escaped! Victory!', yellow, 90)
 
         pygame.display.update()
         clock.tick(60)
