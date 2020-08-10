@@ -22,7 +22,7 @@
 <p align="center">
   <a href="#microscope-about-the-game">About</a> •
   <a href="#video_game-how-to-play">How to play</a> •
-  <a href="#computer-tecnologias">Technologies</a> •
+  <a href="#computer-technologies">Technologies</a> •
   <a href="#handshake-how-to-contribute-to-the-project">Contributing</a> •
   <a href="#honeybee-author">Author</a> •
   <a href="#clipboard-license">License</a>
