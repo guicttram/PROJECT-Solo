@@ -1,11 +1,8 @@
-# PROJECT-Solo
-### My first game with PyGame ever.
+<h1 align="center">PROJECT-Solo</h1>
 
-### Name: Guilherme Ceratti
+<h3 align="center">:rocket: Escape from the Empire</h3>
 
-### Email: guicttram@gmail.com
-
-### LinkedIn: linkedin.com/in/guicttram
+<p align="center">My first project using PyGame ever.</p>
 
 ## [PORTUGUESE]
 Olá! Bem vindo ao PROJECT: Solo
