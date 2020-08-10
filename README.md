@@ -37,7 +37,7 @@
 
 ## :computer: How to play
 
-<p>First, you will need .[Git].(https://git-scm.com) installed.</p>
+<p>First, you will need [Git](https://git-scm.com) installed.</p>
 <p>If you'd like to mess around with the code, feel free to do so.</p>
 <p>You will need .[Python3].(https://www.python.org/) and .[PyGame].(https://www.pygame.org/news) though.</p>
 <p>I recommend using .[VSCode].(https://code.visualstudio.com/) as your code editor.</p>
