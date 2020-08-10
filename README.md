@@ -37,27 +37,18 @@
 
 ## :computer: How to play
 
-So, you should probably have Git installed. 
-[Git](https://git-scm.com).
-If you'd like to mess around with the code, feel free to do so. I recommend using [VSCode](https://code.visualstudio.com/).
+<p>First, you will need [Git](https://git-scm.com) installed.</p>
+<p>If you'd like to mess around with the code, feel free to do so.</p>
+<p>You will need [Python3](https://www.python.org/) and [PyGame](https://www.pygame.org/news) though.</p>
+<p>I recommend using [VSCode](https://code.visualstudio.com/) as your code editor.</p>
 
 #### :video_game: Rodando a aplicação
 
-If you want to go straight to the point and just play the game:
-
 ```bash
 
-# Clone esse repositório
-$ git clone https://github.com/guicttram/proffy
+# Clone this repository
+$ git clone https://github.com/guicttram/PROJECT-Solo.git
 
-# Acesse a pasta do projeto no seu VSCode
-$ cd proffy
-
-# Instale as dependências
-$ npm install
-
-# Execute a aplicação
-$ npm start
-
-# O servidor também iniciará na porta:5500 - acesse http://localhost:5500
 ```
+
+That's pretty much it. The "game" folder contains the final build, with an executable. Just click and play. However, the .py files and necessary assets are also in the package, so feel free to edit the code, assets, execute through a code editor or even modify stuff and build your own game from it!
